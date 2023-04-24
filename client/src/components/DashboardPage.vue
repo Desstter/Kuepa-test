@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col mx-auto my-4">
-    <div class="h-3/4 w-full flex flex-row-reverse">
-      <div class="w-1/4 h-full bg-gray-200 flex flex-col-reverse p-4">
+    <div class="h-3/4 w-full flex flex-row-reverse ">
+      <div class="w-1/4 h-full bg-gray-200 flex flex-col-reverse p-4 overflow-y-auto">
         <form @submit.prevent="handleSubmit" class="flex">
           <input v-model="newMessage" placeholder="Ingresa tu mensaje"
             class="mr-2 px-2 py-1 rounded-lg border border-gray-300 flex-grow focus:outline-none focus:border-blue-500">
@@ -10,7 +10,7 @@
         <div v-for="(message, index) in messages" :key="index" class="d-flex p-3">
             <div class="card mb-3 shadow border-1" >
               <div class="card-body">
-                <small>{{ message.from }}: {{ message.body }}</small>
+                <small>{{ message.from  }} <span v-if="message.admin" class="bg-green-400 text-white px-1 rounded-lg ml-1">Docente</span> : {{ message.body }}</small>
               </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
           <div v-for="(message, index) in storedMessages" :key="index" class="d-flex p-3" :class="message.from === username ? 'justify-content-end' : 'justify-content-start'">
             <div class="card mb-3 shadow border-1" :class="message.from === username ? 'bg-success bg-opacity-25' : 'bg-light'">
               <div class="card-body">
-                <small class="text-muted">{{ message.from }}: {{ message.message }}</small>
+                <small class="text-muted">{{ message.from}} <span v-if="message.admin" class="bg-green-400 text-white px-1 rounded-lg ml-1">Docente</span> : {{ message.message }}</small>
               </div>
             </div>
           </div>
