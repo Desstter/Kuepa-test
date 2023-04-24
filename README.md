@@ -15,3 +15,13 @@ El proyecto consiste en una aplicación de chat en tiempo real que permite a los
 La aplicación utiliza websockets para la comunicación en tiempo real entre el cliente y el servidor, mas especificamente Socket.io y la información de los usuarios y las salas de chat se almacena en una base de datos de MongoDB en la nube a través de MongoDB Atlas.
 
 Los formularios de registro, inicio de sesión  y envio de mensajes tienen integradas validaciones de campos obligatorios y de formato.
+
+### Datos de inicio de sesión de prueba
+
+Estos son los datos de inicio de sesión generados de prueba para probar la funcionalidad de la aplicación:
+
+Usuario: JulioP
+Contraseña: 123456
+
+Usuario: CarlosP
+Contraseña: 123456
