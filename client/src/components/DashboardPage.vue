@@ -35,7 +35,6 @@
 import io from 'socket.io-client'
 import { reactive, toRefs, onMounted } from 'vue'
 import axios from 'axios'
-const isauth = JSON.parse(sessionStorage.getItem('isAuthenticated'));
 
 
 export default {
@@ -44,11 +43,10 @@ export default {
     isAuthenticated ? next() : next('/');
   },
   created(){
-
   },
   setup() {
     const state = reactive({
-      username: isauth.username,
+      username: JSON.parse(sessionStorage.getItem('isAuthenticated')).username, 
       newMessage: '',
       videoUrl: 'https://www.youtube.com/embed/fOCqD04GIC0',
       messages: [],

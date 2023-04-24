@@ -76,7 +76,7 @@ export default {
     <div class="bg-white flex flex-col items-center justify-center h-full text-center p-0 sm:p-10">
       <img src="https://lms.kuepa.com/assets/f2022b0b87d4feb2d6945e5fd4356dd7.png" alt="" srcset="">
       <input type="text" placeholder="Nombre completo" v-model="newFullName">
-      <input type="email" placeholder="Nombre de usuario" v-model="newUsername">
+      <input type="text" placeholder="Nombre de usuario" v-model="newUsername">
       <input type="password" placeholder="Contraseña" v-model="newPassword">
       <button @click="newUser()">Registrarme</button>
     </div>
