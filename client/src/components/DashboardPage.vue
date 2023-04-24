@@ -7,8 +7,8 @@
             class="mr-2 px-2 py-1 rounded-lg border border-gray-300 flex-grow focus:outline-none focus:border-blue-500">
           <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded-lg" >Enviar</button>
         </form>
-        <div v-for="(message, index) in messages" :key="index" class="d-flex p-3" :class="message.from === this.username ? 'justify-content-end' : 'justify-content-start'">
-            <div class="card mb-3 shadow border-1" :class="message.from === this.username ? 'bg-success bg-opacity-25' : 'bg-light'">
+        <div v-for="(message, index) in messages" :key="index" class="d-flex p-3">
+            <div class="card mb-3 shadow border-1" >
               <div class="card-body">
                 <small>{{ message.from }}: {{ message.body }}</small>
               </div>
@@ -51,7 +51,8 @@ export default {
       videoUrl: 'https://www.youtube.com/embed/fOCqD04GIC0',
       messages: [],
       storedMessages: [],
-      firstTime: false
+      firstTime: false,
+      isAdmin: JSON.parse(sessionStorage.getItem('isAuthenticated')).admin
     })
 
     const url = 'http://localhost:3001/api'
@@ -59,7 +60,11 @@ export default {
     const socket = io('http://localhost:3001')
 
     const receivedMessage = (message) => {
+      console.log(message);
+      console.log(state.messages);
       state.messages.unshift(message)
+      console.log(state.messages);
+
     }
 
     const loadStoredMessages = async () => {
@@ -77,9 +82,10 @@ export default {
     const handleSubmit = (e) => {
       e.preventDefault()
 
-        socket.emit('message', state.newMessage, state.username)
+        socket.emit('message', state.username, state.newMessage, state.isAdmin)
 
         const newMessage = {
+          admin: state.isAdmin,
           body: state.newMessage,
           from: state.username
         }
@@ -87,8 +93,9 @@ export default {
         state.messages.unshift(newMessage)
 
         axios.post(`${url}/save`, {
-          message: state.newMessage,
-          from: state.username
+          admin: state.isAdmin,
+          from: state.username,
+          message: state.newMessage
         }).catch((err) => {
           console.error(err)
         })

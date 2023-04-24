@@ -25,12 +25,12 @@ app.use(bodyParser.json());
 
 io.on('connection', (socket) =>{
    
-    socket.on('message', (nickname, admin, message) => {
+    socket.on('message', (nickname, message, admin,) => {
         console.log(nickname, admin, message )
         socket.broadcast.emit('message', {
             from: nickname,
-            admin: admin,
             body: message,
+            admin: admin,
         })
     })
 })
