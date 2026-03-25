@@ -1,27 +1,34 @@
-# README
-Este es un proyecto de prueba técnica que utiliza Vue.js 3 para el cliente y Node.js para el servidor sobre Express.JS, y hace uso de websockets para la comunicación en tiempo real entre el cliente y el servidor.
+# Kuepa — Chat en Tiempo Real
 
-## Instalación
-Para instalar las dependencias del cliente y del servidor, ejecuta el siguiente comando en la raíz del proyecto:
+Prueba técnica para **Kuepa**. App de chat en tiempo real con salas de conversación, construida con Vue.js 3 y Socket.io.
 
-```npm install```
-## Ejecución
-Para ejecutar el cliente y el servidor, ejecuta el siguiente comando en la raíz del proyecto:
+## Stack
 
-```npm run dev```
-## Funcionalidad
-El proyecto consiste en una aplicación de chat en tiempo real que permite a los usuarios registrarse y conectarse a una sala de chat específica. Los usuarios pueden enviar mensajes en las salas de chat y ver los mensajes de otros usuarios en tiempo real.
+**Frontend:** Vue.js 3 · Socket.io-client
 
-La aplicación utiliza websockets para la comunicación en tiempo real entre el cliente y el servidor, mas especificamente Socket.io y la información de los usuarios y las salas de chat se almacena en una base de datos de MongoDB en la nube a través de MongoDB Atlas.
+**Backend:** Node.js · Express · Socket.io · MongoDB Atlas
 
-Los formularios de registro, inicio de sesión  y envio de mensajes tienen integradas validaciones de campos obligatorios y de formato.
+## Features
 
-### Datos de inicio de sesión de prueba
+- Registro e inicio de sesión con validaciones de formulario
+- Salas de chat múltiples
+- Mensajería en tiempo real con WebSockets (Socket.io)
+- Historial de mensajes persistido en MongoDB Atlas
+- Validación de campos obligatorios y formato en todos los formularios
 
-Estos son los datos de inicio de sesión generados de prueba para probar la funcionalidad de la aplicación:
+## Setup
 
-Usuario: JulioP
-Contraseña: 123456
+```bash
+# Instalar dependencias (cliente y servidor)
+npm install
 
-Usuario: CarlosP
-Contraseña: 123456
+# Ejecutar
+npm run dev
+```
+
+**Credenciales de prueba:**
+
+| Usuario | Contraseña |
+|---------|-----------|
+| JulioP  | 123456    |
+| CarlosP | 123456    |
